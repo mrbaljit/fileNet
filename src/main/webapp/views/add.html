@@ -1,0 +1,51 @@
+<div layout="column" ng-cloak class="md-inline-form">
+    <md-toolbar class="md-theme-light">
+        <h2 class="md-toolbar-tools">
+            <span>Profile Information</span>
+        </h2>
+    </md-toolbar>
+    <md-content layout-gt-xs="row" layout-padding>
+        <div>
+            <md-input-container>
+                <label>Profile Name</label>
+                <input ng-model="product.productCode" required>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Source Repository</label>
+                <md-select ng-model="product.productCategory">
+                    <md-optgroup label="Source Repository">
+                        <md-option ng-value="item.id" ng-repeat="item in sourceRepository">{{item.label}}</md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+        </div>
+    </md-content>
+    <md-content layout-gt-xs="row" layout-padding>
+        <div>
+            <md-input-container class="md-block">
+                <label>Target Repository</label>
+                <md-select ng-model="product.productCategory">
+                    <md-optgroup label="Target Repository">
+                        <md-option ng-value="item.id" ng-repeat="item in targetRepository">{{item.label}}</md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+        </div>
+    </md-content>
+    <md-content layout-padding>
+        <div>
+            <form name="userForm">
+                <md-content>
+                    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                        <md-button class="md-raised md-primary" ng-click="cancel()">Cancel</md-button>
+                        <md-button class="md-raised md-primary" ng-click="saveProduct()">Save</md-button>
+                    </section>
+                </md-content>
+
+            </form>
+        </div>
+    </md-content>
+
+</div>
+
+

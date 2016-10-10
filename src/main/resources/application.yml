@@ -1,0 +1,9 @@
+server:
+  port: 6090
+
+spring:
+  data:
+    mongodb:
+      database: filenet
+      host: localhost
+      port: 27017

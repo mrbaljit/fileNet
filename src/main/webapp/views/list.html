@@ -1,0 +1,41 @@
+<div ng-cloak layout-gt-sm="row" layout="column">
+    <div flex-gt-sm flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>
+                    <span>Profiles</span>
+                </h2>
+                <span flex></span>
+                <md-button class="md-raised" aria-label="Add Profile" ng-click="showProfilePage()">
+                    Add Profiles
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content>
+            <md-list flex>
+                <md-list-item class="md-3-line" ng-repeat="item in products | orderBy:'productId'" ng-click="null">
+                    <div class="md-list-item-text" layout="column" flex="20">
+                        <h4>Product ID : {{ item.productId }}</h4> </div>
+                    <div class="md-list-item-text" layout="column" flex="30">
+                        <h4>Product Code : {{ item.productCode }}</h4></div>
+                    <div class="md-list-item-text" layout="column" flex="grow">
+                        <p>Cost Price : {{ item.costPrice | currency}}</p>
+                        <p>Retail Price : {{ item.retailPrice | currency }}</p>
+                        <p>Product Name : {{ item.productName }}</p>
+                    </div>
+                    <div class="md-list-item-text" layout="column" flex="10">
+                        <md-button ui-sref="editProduct({id:item.productId})">
+                        <md-tooltip md-direction="bottom">Edit</md-tooltip>
+                        <md-icon md-svg-src="images/ic_mode_edit_black_24px.svg" aria-label="Edit"></md-icon>
+                        </md-button>
+                        <md-button ng-click="deleteProduct($event, item.productId)">
+                            <md-tooltip md-direction="bottom">Delete</md-tooltip>
+                        <md-icon md-svg-src="images/ic_delete_black_24px.svg" aria-label="Delete"></md-icon>
+                        </md-button>
+                     </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+</div>

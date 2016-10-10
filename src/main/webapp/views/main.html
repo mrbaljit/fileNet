@@ -1,0 +1,65 @@
+<div ng-cloak >
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-red' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Profile Management</span>
+                        <span class="md-subhead">TODO - Enter Description</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="listProduct()">List Profiles</md-button>
+                    <md-button ng-click="addProduct()">Add Profiles</md-button>
+                </md-card-actions>
+            </md-card>
+            <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Repository Details</span>
+                        <span class="md-subhead">TODO - Enter Description</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="listProduct()">Show Repositories</md-button>
+                    <md-button ng-click="addProduct()">Add Repository</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Mapping Property </span>
+                        <span class="md-subhead">TODO - Enter Description</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button>List Mappings</md-button>
+                    <md-button>Add Mappings</md-button>
+                </md-card-actions>
+            </md-card>
+           <!-- <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Card with image</span>
+                        <span class="md-subhead">{{showDarkTheme}} &#45;&#45;</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-md card-media"></div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button>Action 1</md-button>
+                    <md-button>Action 2</md-button>
+                </md-card-actions>
+            </md-card>-->
+            <div layout layout-padding layout-align="center end" style="height:200px">
+                <md-checkbox ng-model="showDarkTheme">Use 'Dark' Themed Cards</md-checkbox>
+            </div>
+        </div>
+    </md-content>
+</div>
