@@ -1,6 +1,9 @@
-package com.example;
+package co.nz.suncorp.controller;
 
 
+import co.nz.suncorp.domain.FileNetProfile;
+import co.nz.suncorp.repository.FileNetProfileRepository;
+import co.nz.suncorp.ProfileViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,12 +39,12 @@ public class FileNetProfileController {
     }
 
     @RequestMapping(value = "{id}/getProduct", method = GET)
-    public ProfileViewModel getAll(@PathVariable String id){
-        System.out.println(id);
+    public FileNetProfile getAll(@PathVariable String id){
+        System.out.println("getProduct : " + id);
         //Product product = productService.getProduct(Long.valueOf(id));
         //ProductViewModel productViewModel = productMapper.mapDomainToProductViewModel(product, product.getProductDiscount());
        // ProfileViewModel p = repository.findByProfileName("qazxsw");
-        return null;
+        return repository.findById(id);
         //return p;
     }
 

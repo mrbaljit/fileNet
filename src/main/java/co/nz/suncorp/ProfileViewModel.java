@@ -1,4 +1,4 @@
-package com.example;
+package co.nz.suncorp;
 
 /**
  * Created by u342597 on 10/10/2016.

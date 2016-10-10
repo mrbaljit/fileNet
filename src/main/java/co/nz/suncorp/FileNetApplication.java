@@ -1,5 +1,7 @@
-package com.example;
+package co.nz.suncorp;
 
+import co.nz.suncorp.domain.FileNetProfile;
+import co.nz.suncorp.repository.FileNetProfileRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,7 @@ public class FileNetApplication implements CommandLineRunner {
 		}
 		System.out.println();
 
-		System.out.println(repository.findByProfileName("Alice"));
+		System.out.println(repository.findByProfileName("wwe"));
 
 		// fetch an individual customer
 		/*System.out.println("FileNet found with findByFirstName('Alice'):");

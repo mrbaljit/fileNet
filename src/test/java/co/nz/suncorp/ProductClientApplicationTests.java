@@ -1,4 +1,4 @@
-package com.example;
+package co.nz.suncorp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

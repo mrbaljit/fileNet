@@ -1,4 +1,4 @@
-package com.example;
+package co.nz.suncorp.domain;
 
 import org.springframework.data.annotation.Id;
 

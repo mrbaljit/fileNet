@@ -14,10 +14,7 @@
 
        if($state.current.data.entryPoint === 'edit') {
            productService.getProduct($stateParams.id).then(function (data) {
-               $scope.product = data;
-               $scope.product.discountEndDate = new Date($scope.product.discountEndDate);
-               $scope.product.discountStartDate = new Date($scope.product.discountStartDate);
-
+               $scope.profile = data;
            });
        }
         $scope.cancel = function () {
