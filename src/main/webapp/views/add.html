@@ -8,11 +8,11 @@
         <div>
             <md-input-container>
                 <label>Profile Name</label>
-                <input ng-model="product.productCode" required>
+                <input ng-model="profile.profileName" required>
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Source Repository</label>
-                <md-select ng-model="product.productCategory">
+                <md-select ng-model="profile.sourceRepository">
                     <md-optgroup label="Source Repository">
                         <md-option ng-value="item.id" ng-repeat="item in sourceRepository">{{item.label}}</md-option>
                     </md-optgroup>
@@ -24,9 +24,9 @@
         <div>
             <md-input-container class="md-block">
                 <label>Target Repository</label>
-                <md-select ng-model="product.productCategory">
+                <md-select ng-model="profile.targetRepository">
                     <md-optgroup label="Target Repository">
-                        <md-option ng-value="item.id" ng-repeat="item in targetRepository">{{item.label}}</md-option>
+                        <md-option ng-value="targetItem.id" ng-repeat="targetItem in targetRepository">{{targetItem.label}}</md-option>
                     </md-optgroup>
                 </md-select>
             </md-input-container>

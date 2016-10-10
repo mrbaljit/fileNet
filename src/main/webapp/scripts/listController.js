@@ -9,7 +9,7 @@
     function ListController($scope, $http, $filter, $state, $mdDialog, productService) {
 
         productService.getAllProducts().then(function (data) {
-            $scope.products = data;
+            $scope.profiles = data;
         });
 
         $scope.showProfilePage = function () {

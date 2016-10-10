@@ -68,29 +68,16 @@
             'label': 'Oracle'}
         ];
 
-        $scope.product = {};
-        $scope.product.discountStartDate = new Date();
-        $scope.product.discountEndDate = new Date();
+        $scope.profile = {};
+       // $scope.product.discountStartDate = new Date();
+       // $scope.product.discountEndDate = new Date();
 
         $scope.saveProduct = function () {
 
           var dataObj = {
-              productId: $scope.product.productId,
-              productCategory: $scope.product.productCategory,
-              productCode : $scope.product.productCode,
-              productName : $scope.product.productName,
-              costPrice : $scope.product.costPrice,
-              retailPrice : $scope.product.retailPrice,
-              productDescription : $scope.product.productDescription,
-              productInvoiceDescription : $scope.product.productInvoiceDescription,
-              discountStartDate : $scope.product.discountStartDate.toLocaleDateString('en-NZ'),
-              discountEndDate : $scope.product.discountEndDate.toLocaleDateString('en-NZ'),
-              discountExpires : $scope.product.discountExpires,
-              discountType : $scope.product.discountType,
-              discountAmount : $scope.product.discountAmount,
-              discountPercentage : $scope.product.discountPercentage,
-              discountAmountForOrdersOver : $scope.product.discountAmountForOrdersOver,
-              discountForProduct : $scope.product.discountForProduct
+              profileName: $scope.profile.profileName,
+              sourceRepository : $scope.profile.sourceRepository,
+              targetRepository : $scope.profile.targetRepository
             };
 
         productService.createUpdateProduct(dataObj);

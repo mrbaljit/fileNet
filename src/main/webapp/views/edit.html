@@ -1,105 +1,45 @@
 <div layout="column" ng-cloak class="md-inline-form">
     <md-toolbar class="md-theme-light">
         <h2 class="md-toolbar-tools">
-            <span>Product Information</span>
+            <span>Profile Information</span>
         </h2>
     </md-toolbar>
     <md-content layout-gt-xs="row" layout-padding>
         <div>
+            <md-input-container>
+                <label>Profile Name</label>
+                <input ng-model="profile.profileName" required>
+            </md-input-container>
             <md-input-container class="md-block">
-                <label>Product Category</label>
-                <md-select ng-model="product.productCategory">
-                    <md-optgroup label="Product Category">
+                <label>Source Repository</label>
+                <md-select ng-model="profile.sourceRepository">
+                    <md-optgroup label="Source Repository">
                         <md-option ng-value="item.id" ng-repeat="item in sourceRepository">{{item.label}}</md-option>
                     </md-optgroup>
                 </md-select>
             </md-input-container>
-            <md-input-container>
-                <label>Code</label>
-                <input ng-model="product.productCode" required>
-            </md-input-container>
-            <md-input-container>
-                <label>Name</label>
-                <input ng-model="product.productName">
-            </md-input-container>
-            <md-input-container>
-                <label>Cost</label>
-                <input ng-model="product.costPrice">
-            </md-input-container>
-            <md-input-container>
-                <label>Retail Price</label>
-                <input ng-model="product.retailPrice">
+        </div>
+    </md-content>
+    <md-content layout-gt-xs="row" layout-padding>
+        <div>
+            <md-input-container class="md-block">
+                <label>Target Repository</label>
+                <md-select ng-model="profile.targetRepository">
+                    <md-optgroup label="Target Repository">
+                        <md-option ng-value="targetItem.id" ng-repeat="targetItem in targetRepository">{{targetItem.label}}</md-option>
+                    </md-optgroup>
+                </md-select>
             </md-input-container>
         </div>
     </md-content>
-    <md-content layout-gt-xl="row" layout-padding>
-        <md-input-container class="md-block">
-            <label>Product Description</label>
-            <textarea ng-model="product.productDescription" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
-        </md-input-container>
-    </md-content>
-    <md-content layout-gt-xl="row" layout-padding>
-        <md-input-container class="md-block">
-            <label>Product Invoice Description</label>
-            <textarea ng-model="product.productInvoiceDescription" md-maxlength="150" rows="5" md-select-on-focus=""></textarea>
-        </md-input-container>
-    </md-content>
-
-    <md-subheader class="md-primary">Product Discount</md-subheader>
     <md-content layout-padding>
         <div>
             <form name="userForm">
-                <div layout-gt-xs="row">
-                    <md-switch ng-model="data.cb1" aria-label="Apply discount">
-                        Apply discount
-                    </md-switch>
-                </div>
-                <div layout-gt-sm="row" ng-if="data.cb1">
-                         <h5>Start Date</h5>
-                        <md-datepicker ng-model="product.discountStartDate"  md-placeholder="Start date"></md-datepicker>
-                        <p>&nbsp;&nbsp;&nbsp;</p>
-                        <h5>End Date</h5>
-                        <md-datepicker ng-model="product.discountEndDate" md-placeholder="End date"></md-datepicker>
-                    <p>&nbsp;&nbsp;&nbsp;</p>
-                    <md-checkbox ng-model="product.discountExpires" aria-label="Never Expires">
-                        Never Expires
-                    </md-checkbox>
-                </div>
-                <div layout-gt-sm="row" ng-if="data.cb1">
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Discount Types</label>
-                        <md-select ng-model="product.discountType">
-                            <md-optgroup label="Discount Types">
-                                <md-option ng-value="item.id" ng-repeat="item in discountTypes">{{item.label}}</md-option>
-                            </md-optgroup>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm ng-if="product.discountType === 1">
-                        <label>Take $$$</label>
-                        <input type="number" step="any" name="rate" ng-model="product.discountAmount" />
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm ng-if="product.discountType === 2">
-                        <label>Take %</label>
-                        <input type="number" step="any" name="rate" ng-model="product.discountPercentage" />
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>Of for</label>
-                        <md-select ng-model="product.discountForProduct">
-                            <md-optgroup label="Of for">
-                                <md-option ng-value="item.id" ng-repeat="item in discountOnPrd">{{item.label}}</md-option>
-                            </md-optgroup>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm ng-if="product.discountForProduct === 2">
-                        <label>Amount</label>
-                        <input type="number" step="any" name="rate" ng-model="product.discountAmountForOrdersOver" />
-                    </md-input-container>
-                </div>
-
                 <md-content>
                     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                         <md-button class="md-raised md-primary" ng-click="cancel()">Cancel</md-button>
-                        <md-button class="md-raised md-primary"  ng-click="saveProduct()">Update Product</md-button>
+                        <md-button class="md-raised md-primary" ng-click="saveProduct()">Save</md-button>
+                    </section>
                 </md-content>
 
             </form>

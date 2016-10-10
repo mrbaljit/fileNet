@@ -14,7 +14,7 @@
 
                 function getProduct(id) {
                     var def = $q.defer();
-                    $http.get('http://localhost:9090/product/' + id +'/getProduct').success(function (data) {
+                    $http.get('http://localhost:6090/profile/' + id +'/getProduct').success(function (data) {
                         console.log(data, " get Product");
                         def.resolve(data);
                         //return data;
@@ -28,7 +28,10 @@
 
         function createUpdateProduct(dataObj) {
 
-            var res = $http.post('http://localhost:9090/product/createUpdateProduct', dataObj);
+
+            console.log(dataObj);
+
+            var res = $http.post('http://localhost:6090/profile/createUpdateProduct', dataObj);
 
             res.success(function(data, status, headers, config) {
                 console.log("eeee");
@@ -40,7 +43,8 @@
         }
 
                 function deleteProduct(id) {
-                    $http.post('http://localhost:9090/product/' + id +'/deleteProduct')
+                    console.log("delete id >>>>>>>>>>>>>> : "  , id)
+                    $http.post('http://localhost:6090/profile/' + id +'/deleteProduct')
                         .then(
                             function(response){
                                 console.log(response, "success ");
@@ -56,7 +60,7 @@
 
        function getAllProducts() {
            var def = $q.defer();
-            $http.get('http://localhost:9090/product/allProducts').success(function (data) {
+            $http.get('http://localhost:6090/profile/allProfiles').success(function (data) {
                 console.log(data, " vvvv");
                 def.resolve(data);
                 //return data;

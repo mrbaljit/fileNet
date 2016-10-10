@@ -13,22 +13,19 @@
         </md-toolbar>
         <md-content>
             <md-list flex>
-                <md-list-item class="md-3-line" ng-repeat="item in products | orderBy:'productId'" ng-click="null">
+                <md-list-item class="md-3-line" ng-repeat="item in profiles | orderBy:'profileName'" ng-click="null">
                     <div class="md-list-item-text" layout="column" flex="20">
-                        <h4>Product ID : {{ item.productId }}</h4> </div>
+                        <h4>Profile Name :  {{item.profileName}} </h4> </div>
                     <div class="md-list-item-text" layout="column" flex="30">
-                        <h4>Product Code : {{ item.productCode }}</h4></div>
-                    <div class="md-list-item-text" layout="column" flex="grow">
-                        <p>Cost Price : {{ item.costPrice | currency}}</p>
-                        <p>Retail Price : {{ item.retailPrice | currency }}</p>
-                        <p>Product Name : {{ item.productName }}</p>
-                    </div>
+                        <h4>Source Repository : {{ item.sourceRepository }}</h4></div>
+                    <div class="md-list-item-text" layout="column" flex="30">
+                        <h4>Target Repository : {{ item.targetRepository }}</h4></div>
                     <div class="md-list-item-text" layout="column" flex="10">
-                        <md-button ui-sref="editProduct({id:item.productId})">
+                        <md-button ui-sref="editProduct({id:item.id})">
                         <md-tooltip md-direction="bottom">Edit</md-tooltip>
                         <md-icon md-svg-src="images/ic_mode_edit_black_24px.svg" aria-label="Edit"></md-icon>
                         </md-button>
-                        <md-button ng-click="deleteProduct($event, item.productId)">
+                        <md-button ng-click="deleteProduct($event, item.id)">
                             <md-tooltip md-direction="bottom">Delete</md-tooltip>
                         <md-icon md-svg-src="images/ic_delete_black_24px.svg" aria-label="Delete"></md-icon>
                         </md-button>
