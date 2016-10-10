@@ -12,15 +12,15 @@
             </div>
         </md-toolbar>
         <md-content>
-            <md-list flex>
-                <md-list-item class="md-3-line" ng-repeat="item in profiles | orderBy:'profileName'" ng-click="null">
+            <md-list class="md-dense" flex>
+                <md-list-item class="md-2-line" ng-repeat="item in profiles | orderBy:'profileName'" ng-click="null">
                     <div class="md-list-item-text" layout="column" flex="20">
                         <h4>Profile Name :  {{item.profileName}} </h4> </div>
-                    <div class="md-list-item-text" layout="column" flex="30">
+                    <div class="md-list-item-text" layout="column" flex="20">
                         <h4>Source Repository : {{ item.sourceRepository }}</h4></div>
-                    <div class="md-list-item-text" layout="column" flex="30">
+                    <div class="md-list-item-text" layout="column" flex="20">
                         <h4>Target Repository : {{ item.targetRepository }}</h4></div>
-                    <div class="md-list-item-text" layout="column" flex="10">
+
                         <md-button ui-sref="editProduct({id:item.id})">
                         <md-tooltip md-direction="bottom">Edit</md-tooltip>
                         <md-icon md-svg-src="images/ic_mode_edit_black_24px.svg" aria-label="Edit"></md-icon>
@@ -29,7 +29,6 @@
                             <md-tooltip md-direction="bottom">Delete</md-tooltip>
                         <md-icon md-svg-src="images/ic_delete_black_24px.svg" aria-label="Delete"></md-icon>
                         </md-button>
-                     </div>
                     <md-divider ng-if="!$last"></md-divider>
                 </md-list-item>
             </md-list>
