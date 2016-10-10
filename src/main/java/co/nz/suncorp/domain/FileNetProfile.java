@@ -1,6 +1,7 @@
 package co.nz.suncorp.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.crossstore.RelatedDocument;
 
 
 public class FileNetProfile {
@@ -11,6 +12,19 @@ public class FileNetProfile {
     public String profileName;
     public String sourceRepository;
     public String targetRepository;
+
+    public SurveyInfo getSurveyInfo() {
+        return surveyInfo;
+    }
+
+    public void setSurveyInfo(SurveyInfo surveyInfo) {
+        this.surveyInfo = surveyInfo;
+    }
+
+    @RelatedDocument
+    private SurveyInfo surveyInfo;
+
+
 
     public String getId() {
         return id;

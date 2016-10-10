@@ -2,6 +2,7 @@ package co.nz.suncorp.controller;
 
 
 import co.nz.suncorp.domain.FileNetProfile;
+import co.nz.suncorp.domain.SurveyInfo;
 import co.nz.suncorp.repository.FileNetProfileRepository;
 import co.nz.suncorp.ProfileViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,19 @@ public class FileNetProfileController {
 
     @RequestMapping(value = "/createUpdateProduct" , method = RequestMethod.POST)
     public void createUpdateProduct(@RequestBody FileNetProfile fileNetProfile) {
-        repository.save(new FileNetProfile(fileNetProfile.getProfileName(), fileNetProfile.getSourceRepository(), fileNetProfile.getTargetRepository()));
+
+
+        FileNetProfile ff = new FileNetProfile();
+        ff.setProfileName(fileNetProfile.getProfileName());
+        ff.setSourceRepository(fileNetProfile.getSourceRepository());
+        ff.setTargetRepository(fileNetProfile.getTargetRepository());
+        SurveyInfo surveyInfo = new SurveyInfo()
+                .addQuestionAndAnswer("age", "22")
+                .addQuestionAndAnswer("married", "Yes")
+                .addQuestionAndAnswer("citizenship", "Norwegian");
+        ff.setSurveyInfo(surveyInfo);
+
+        repository.save(ff);
 
     }
 
@@ -44,6 +57,7 @@ public class FileNetProfileController {
         //Product product = productService.getProduct(Long.valueOf(id));
         //ProductViewModel productViewModel = productMapper.mapDomainToProductViewModel(product, product.getProductDiscount());
        // ProfileViewModel p = repository.findByProfileName("qazxsw");
+        FileNetProfile ff = repository.findById(id);
         return repository.findById(id);
         //return p;
     }

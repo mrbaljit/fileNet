@@ -21,18 +21,6 @@
             $state.go('listProducts');
         }
 
-
-        $scope.discountTypes = [
-            {
-                "id": 1,
-                "label": "$NZ"
-            },
-            {
-                "id": 2,
-                "label": "% discount"
-            }
-        ];
-
         $scope.targetRepository = [
             {
                 "id": 1,
