@@ -1,3 +1,4 @@
+<form name="userForm">
 <div layout="column" ng-cloak class="md-inline-form">
     <md-toolbar class="md-theme-light">
         <h2 class="md-toolbar-tools">
@@ -9,10 +10,13 @@
             <md-input-container>
                 <label>Profile Name</label>
                 <input ng-model="profile.profileName" required>
+                <div ng-messages="profile.profileName.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Source Repository</label>
-                <md-select ng-model="profile.sourceRepository">
+                <md-select ng-model="profile.sourceRepository" required>
                     <md-optgroup label="Source Repository">
                         <md-option ng-value="item.id" ng-repeat="item in sourceRepository">{{item.label}}</md-option>
                     </md-optgroup>
@@ -24,7 +28,7 @@
         <div>
             <md-input-container class="md-block">
                 <label>Target Repository</label>
-                <md-select ng-model="profile.targetRepository">
+                <md-select ng-model="profile.targetRepository" required>
                     <md-optgroup label="Target Repository">
                         <md-option ng-value="targetItem.id" ng-repeat="targetItem in targetRepository">{{targetItem.label}}</md-option>
                     </md-optgroup>
@@ -34,18 +38,18 @@
     </md-content>
     <md-content layout-padding>
         <div>
-            <form name="userForm">
+
+                --{{ userForm.$invalid }} --
                 <md-content>
                     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                         <md-button class="md-raised md-primary" ng-click="cancel()">Cancel</md-button>
-                        <md-button class="md-raised md-primary" ng-click="saveProduct()">Save</md-button>
+                        <md-button ng-disabled="userForm.$invalid" class="md-raised md-primary" ng-click="saveProduct()">Save</md-button>
                     </section>
                 </md-content>
 
-            </form>
         </div>
     </md-content>
 
 </div>
-
+</form>
 

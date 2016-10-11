@@ -1,6 +1,7 @@
 package co.nz.suncorp.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.crossstore.RelatedDocument;
 
 
@@ -9,7 +10,9 @@ public class FileNetProfile {
     @Id
     public String id;
 
+    //@Indexed(unique = true)  - TODO need to look into this.
     public String profileName;
+
     public String sourceRepository;
     public String targetRepository;
 
@@ -23,8 +26,6 @@ public class FileNetProfile {
 
     @RelatedDocument
     private SurveyInfo surveyInfo;
-
-
 
     public String getId() {
         return id;

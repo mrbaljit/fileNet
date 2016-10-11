@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class FileNetProfileController {
     }
 
     @RequestMapping(value = "/createUpdateProduct" , method = RequestMethod.POST)
-    public void createUpdateProduct(@RequestBody FileNetProfile fileNetProfile) {
+    public @ResponseBody String createUpdateProduct(@RequestBody FileNetProfile fileNetProfile) {
 
 
         FileNetProfile ff = new FileNetProfile();
@@ -46,9 +47,16 @@ public class FileNetProfileController {
                 .addQuestionAndAnswer("married", "Yes")
                 .addQuestionAndAnswer("citizenship", "Norwegian");
         ff.setSurveyInfo(surveyInfo);
-
-        repository.save(ff);
-
+        System.out.println(repository.findByProfileName(fileNetProfile.getProfileName()));
+        if(repository.findByProfileName(fileNetProfile.getProfileName()) == null)
+        {
+            repository.save(ff);
+        }
+        else
+        {
+            return "{\"message\":\"Already exists.\"}";
+        }
+        return "{\"message\":\"Saved\"}";
     }
 
     @RequestMapping(value = "{id}/getProduct", method = GET)
