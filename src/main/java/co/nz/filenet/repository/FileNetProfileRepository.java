@@ -1,6 +1,6 @@
-package co.nz.suncorp.repository;
+package co.nz.filenet.repository;
 
-import co.nz.suncorp.domain.FileNetProfile;
+import co.nz.filenet.domain.FileNetProfile;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface FileNetProfileRepository extends MongoRepository<FileNetProfile, String> {

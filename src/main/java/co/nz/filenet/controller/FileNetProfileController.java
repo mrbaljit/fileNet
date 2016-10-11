@@ -1,10 +1,9 @@
-package co.nz.suncorp.controller;
+package co.nz.filenet.controller;
 
 
-import co.nz.suncorp.domain.FileNetProfile;
-import co.nz.suncorp.domain.SurveyInfo;
-import co.nz.suncorp.repository.FileNetProfileRepository;
-import co.nz.suncorp.ProfileViewModel;
+import co.nz.filenet.domain.FileNetProfile;
+import co.nz.filenet.domain.SurveyInfo;
+import co.nz.filenet.repository.FileNetProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,4 +1,4 @@
-package co.nz.suncorp.domain;
+package co.nz.filenet.domain;
 
 import java.util.HashMap;
 import java.util.Map;

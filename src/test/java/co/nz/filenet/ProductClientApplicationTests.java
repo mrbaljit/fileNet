@@ -1,4 +1,4 @@
-package co.nz.suncorp;
+package co.nz.filenet;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

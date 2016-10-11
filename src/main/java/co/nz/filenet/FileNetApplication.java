@@ -1,7 +1,7 @@
-package co.nz.suncorp;
+package co.nz.filenet;
 
-import co.nz.suncorp.domain.FileNetProfile;
-import co.nz.suncorp.repository.FileNetProfileRepository;
+import co.nz.filenet.domain.FileNetProfile;
+import co.nz.filenet.repository.FileNetProfileRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.beans.factory.annotation.Autowired;
