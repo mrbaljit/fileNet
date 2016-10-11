@@ -32,10 +32,13 @@
             console.log(dataObj);
 
             var res = $http.post('http://localhost:6090/profile/createUpdateProduct', dataObj);
+            console.log(res);
 
             res.success(function(data, status, headers, config) {
+                console.log(data);
                 console.log("eeee");
-                $state.go('listProducts');
+                alert(data.message);
+                //$state.go('listProducts');
             });
             res.error(function(data, status, headers, config) {
                 alert( "failure message: " + JSON.stringify({data: data}));
