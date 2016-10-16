@@ -56,8 +56,16 @@
                     controller: 'CrudController'
                 }
             }
+        }),
+        $stateProvider.state('login', {
+            url: '/login',
+            views: {
+                'content': {
+                    templateUrl: 'views/login.html',
+                    controller: 'navigation'
+                }
+            }
         })
-
     }]).config(function($mdDateLocaleProvider) {
         $mdDateLocaleProvider.formatDate = function(date) {
             return moment(date).format("DD/MM/YYYY");
@@ -72,7 +80,44 @@
             $scope.listProduct = function () {
                        return $state.go('listProducts');
             };
-        })
+        }).controller('navigation',
+
+            function($rootScope, $scope, $http, $location) {
+//https://spring.io/guides/gs/securing-web/
+            var authenticate = function(credentials, callback) {
+
+              var headers = credentials ? {authorization : "Basic "
+                  + btoa(credentials.username + ":" + credentials.password)
+              } : {};
+
+              $http.get('user', {headers : headers}).success(function(data) {
+                if (data.name) {
+                  $rootScope.authenticated = true;
+                } else {
+                  $rootScope.authenticated = false;
+                }
+                callback && callback();
+              }).error(function() {
+                $rootScope.authenticated = false;
+                callback && callback();
+              });
+
+            }
+
+            authenticate();
+            $scope.credentials = {};
+            $scope.login = function() {
+                authenticate($scope.credentials, function() {
+                  if ($rootScope.authenticated) {
+                    $location.path("/");
+                    $scope.error = false;
+                  } else {
+                    $location.path("/login");
+                    $scope.error = true;
+                  }
+                });
+            };
+          })
         .config(function($mdThemingProvider) {
             $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
             $mdThemingProvider.theme('dark-red').backgroundPalette('red').dark();
