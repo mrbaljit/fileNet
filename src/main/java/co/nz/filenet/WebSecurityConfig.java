@@ -18,6 +18,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/index.html", "/list.html", "/edit.html","/add.html", "/login.html", "/").permitAll()
                 .anyRequest().authenticated();
+
+        http.csrf().disable();
     }
 
     @Autowired
@@ -25,5 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER");
+
+        auth.inMemoryAuthentication().withUser("ravan").password("password").roles("USER");
     }
 }
