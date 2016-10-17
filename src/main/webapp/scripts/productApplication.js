@@ -90,6 +90,7 @@
                   + btoa(credentials.username + ":" + credentials.password)
               } : {};
 
+console.log("headers >>  " , headers);
               $http.get('profile/user', {headers : headers}).success(function(data) {
               console.log(data , "  data");
                 if (data.name) {
