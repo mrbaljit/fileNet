@@ -10,7 +10,9 @@
         'ngSanitize',
         'ui.router',
         'ngMaterial'
-    ]).config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
+
+         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
         $urlRouterProvider.otherwise('/');
 
@@ -81,9 +83,7 @@
                        return $state.go('listProducts');
             };
         }).controller('navigation',
-
-            function($rootScope, $scope, $http, $location) {
-//https://spring.io/guides/gs/securing-web/
+            function($rootScope, $scope, $http, $location, $state) {
             var authenticate = function(credentials, callback) {
 
               var headers = credentials ? {authorization : "Basic "
@@ -91,6 +91,7 @@
               } : {};
 
               $http.get('profile/user', {headers : headers}).success(function(data) {
+              console.log(data , "  data");
                 if (data.name) {
                   $rootScope.authenticated = true;
                 } else {
@@ -109,10 +110,14 @@
             $scope.login = function() {
                 authenticate($scope.credentials, function() {
                   if ($rootScope.authenticated) {
-                    $location.path("/");
+                  console.log($rootScope.authenticated , "  $rootScope.authenticated1");
+                   // $location.path("/");
+                       $state.go('main');
                     $scope.error = false;
                   } else {
-                    $location.path("/login");
+                  console.log($rootScope.authenticated , "  $rootScope.authenticated2");
+                    //$location.path("/login");
+                    $state.go('login');
                     $scope.error = true;
                   }
                 });
