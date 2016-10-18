@@ -34,7 +34,7 @@ public class FileNetApplication implements CommandLineRunner {
 		}
 		System.out.println();
 
-		System.out.println(repository.findByProfileName("wwe"));
+		//System.out.println(repository.findByProfileName("wwe"));
 
 		// fetch an individual customer
 		/*System.out.println("FileNet found with findByFirstName('Alice'):");
