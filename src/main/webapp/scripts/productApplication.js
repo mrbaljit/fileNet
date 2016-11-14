@@ -5,6 +5,7 @@
         'nz.com.product.productService',
         'nz.com.product.listProduct',
         'nz.com.product.crudProduct',
+        'nz.com.product.directive.demoDisplay',
         'ngCookies',
         'ngResource',
         'ngSanitize',
@@ -47,6 +48,20 @@
                 }
             }
         }),
+            $stateProvider.state('mapDBFileNet', {
+                url: '/mapDBFileNet',
+                data: {
+                    entryPoint : 'mapdbfilenet'
+                },
+
+                views: {
+                    'content': {
+                        templateUrl: 'views/mapdbfilenet.html',
+                        controller: 'CrudController',
+                        directive : 'demoDisplay'
+                    }
+                }
+            }),
         $stateProvider.state('editProduct', {
             url: '/:id/editProduct',
             data: {
@@ -78,6 +93,10 @@
             $scope.addProduct = function () {
                        return $state.go('addProduct');
             };
+
+        $scope.mapDBFileNet = function () {
+            return $state.go('mapDBFileNet');
+        };
 
             $scope.listProduct = function () {
                        return $state.go('listProducts');

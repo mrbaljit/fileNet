@@ -10,6 +10,29 @@
 
 
          console.log($state.current.data.entryPoint);
+        $scope.dbcol = [];
+
+        var counter = 0;
+        $scope.data = {
+            fields: []
+        }
+
+//        $scope.days = ['Day', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      //  $scope.months = ['Jan', 'Feb', 'Mar'];
+
+        $scope.addField = function() {
+            $scope.data.fields.push({
+                name: "test " + counter++
+            });
+        };
+
+
+        productService.getDBColumnName().then(function (data) {
+            $scope.dbcol = data;
+            $scope.days = data;
+            $scope.months = data;
+            console.log(data, " db col ..");
+        });
 
 
        if($state.current.data.entryPoint === 'edit') {

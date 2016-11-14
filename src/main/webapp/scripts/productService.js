@@ -9,12 +9,13 @@
                     getAllProducts:getAllProducts,
                     createUpdateProduct : createUpdateProduct,
                     deleteProduct : deleteProduct,
-                    getProduct : getProduct
+                    getProduct : getProduct,
+                    getDBColumnName : getDBColumnName
                 }
 
                 function getProduct(id) {
                     var def = $q.defer();
-                    $http.get('http://localhost:6090/profile/' + id +'/getProduct').success(function (data) {
+                    $http.get('http://10.44.7.248:6090/profile/' + id +'/getProduct').success(function (data) {
                         console.log(data, " get Product");
                         def.resolve(data);
                         //return data;
@@ -22,23 +23,35 @@
                         console.log('Error ' + data)
                     });
                     return def.promise;
-                }                
-                
-                
+                }
 
-        function createUpdateProduct(dataObj) {
+                function getDBColumnName() {
+                    var def = $q.defer();
+                    $http.get('http://10.44.7.248:6090/profile/getDBTableColumns').success(function (data) {
+                        console.log(data, " get Table Name");
+                        def.resolve(data);
+                        //return data;
+                    }).error(function (data, status) {
+                        console.log('Error ' + data)
+                    });
+                    return def.promise;
+                }
+
+
+
+                function createUpdateProduct(dataObj) {
 
 
             console.log(dataObj);
 
-            var res = $http.post('http://localhost:6090/profile/createUpdateProduct', dataObj);
+            var res = $http.post('http://10.44.7.248:6090/profile/createUpdateProduct', dataObj);
             console.log(res);
 
             res.success(function(data, status, headers, config) {
                 console.log(data);
                 console.log("eeee");
                 alert(data.message);
-                //$state.go('listProducts');
+                $state.go('listProducts');
             });
             res.error(function(data, status, headers, config) {
                 alert( "failure message: " + JSON.stringify({data: data}));
@@ -47,7 +60,7 @@
 
                 function deleteProduct(id) {
                     console.log("delete id >>>>>>>>>>>>>> : "  , id)
-                    $http.post('http://localhost:6090/profile/' + id +'/deleteProduct')
+                    $http.post('http://10.44.7.248:6090/profile/' + id +'/deleteProduct')
                         .then(
                             function(response){
                                 console.log(response, "success ");
@@ -63,7 +76,7 @@
 
        function getAllProducts() {
            var def = $q.defer();
-            $http.get('http://localhost:6090/profile/allProfiles').success(function (data) {
+            $http.get('http://10.44.7.248:6090/profile/allProfiles').success(function (data) {
                 console.log(data, " vvvv");
                 def.resolve(data);
                 //return data;

@@ -1,5 +1,6 @@
 server:
   port: 6090
+  address: 10.44.7.248
 
 spring:
   data:
