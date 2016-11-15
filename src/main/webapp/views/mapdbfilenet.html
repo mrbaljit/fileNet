@@ -1,56 +1,92 @@
 <form name="userForm">
 <div layout="column" ng-cloak class="md-inline-form">
+
     <md-toolbar class="md-theme-light">
         <h2 class="md-toolbar-tools">
-            <span>Map DB FileNet Information</span>
+            <span>Map DB - FileNet Information</span>
         </h2>
     </md-toolbar>
+
+    <md-content layout-gt-xs="row" layout-padding>
+        <div>
+            <md-input-container>
+                <label>User Name</label>
+                <input ng-model="profile.userName" required>
+                <div ng-messages="profile.userName.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Database Name</label>
+                <input ng-model="profile.databaseName" required>
+                <div ng-messages="profile.databaseName.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+
+        </div>
+        <div>
+            <md-input-container>
+                <label>Port</label>
+                <input ng-model="profile.port" required>
+                <div ng-messages="profile.port.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Schema Name Name</label>
+                <input ng-model="profile.schemaName" required>
+                <div ng-messages="profile.schemaName.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Schema Name Name</label>
+                <input ng-model="profile.hostName" required>
+                <div ng-messages="profile.hostName.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+        </div>
+    </md-content>
+
+    <md-content>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary" ng-click="connectToDB()">Connect to DB</md-button>
+        </section>
+    </md-content>
+
     <md-content layout-gt-xs="row" layout-padding>
         <div>
             <md-input-container class="md-block">
-                <label>Source Repository</label>
-                <md-select ng-model="profile.sourceRepository1" required>
-                    <md-optgroup label="Source Repository">
-                        <md-option ng-value="item" ng-repeat="item in dbcol | orderBy:'item'">{{item}}</md-option>
+                <label>Target Repository</label>
+                <md-select ng-model="profile.targetRepository" required>
+                    <md-optgroup label="Table Name Repository">
+                        <md-option ng-value="targetItem" ng-repeat="targetItem in tableName">{{targetItem}}</md-option>
                     </md-optgroup>
                 </md-select>
             </md-input-container>
         </div>
     </md-content>
 
-    <md-content layout-gt-xs="row" layout-padding>
-        <div>
-            <md-input-container class="md-block">
-                <label>Source Repository</label>
-                <md-select ng-model="profile.sourceRepository2" required>
-                    <md-optgroup label="Source Repository">
-                        <md-option ng-value="item" ng-repeat="item in dbcol | orderBy:'item'">{{item}}</md-option>
-                    </md-optgroup>
-                </md-select>
-            </md-input-container>
-        </div>
+    <md-content>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary" ng-click="getTableColumns()">Get Table Columns</md-button>
+        </section>
     </md-content>
 
-
-    <button ng-click="addField()">Add Field</button>
+    <md-content>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button class="md-raised md-primary" ng-click="addField()">Add Field</md-button>
+        </section>
+    </md-content>
 
     <div ng-repeat="field in data.fields">
         <div demo-display="field" demo-days="days" demo-months="months"></div>
     </div>
 
     ---{{data.fields}}---
-    <md-content layout-padding>
-        <div>
 
-                --{{ userForm.$invalid }} --
-                <md-content>
-                    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                        <md-button class="md-raised md-primary" ng-click="cancel()">Cancel</md-button>
-                        <md-button ng-disabled="userForm.$invalid" class="md-raised md-primary" ng-click="saveProduct()">Save</md-button>
-                    </section>
-                </md-content>
-        </div>
-    </md-content>
 </div>
 </form>
 

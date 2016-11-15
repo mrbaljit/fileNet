@@ -10,7 +10,8 @@
                     createUpdateProduct : createUpdateProduct,
                     deleteProduct : deleteProduct,
                     getProduct : getProduct,
-                    getDBColumnName : getDBColumnName
+                    getDBColumnName : getDBColumnName,
+                    getDBTableName : getDBTableName
                 }
 
                 function getProduct(id) {
@@ -36,6 +37,27 @@
                     });
                     return def.promise;
                 }
+
+
+                function getDBTableName(dataObj) {
+                    var def = $q.defer();
+                    console.log(dataObj, " db table name");
+
+                    var res = $http.post('http://10.44.7.248:6090/profile/getDBTableName', dataObj);
+                    console.log(res);
+
+                    res.success(function(data, status, headers, config) {
+                        console.log(data);
+                        console.log("eeee");
+                        def.resolve(data);
+                    });
+                    res.error(function(data, status, headers, config) {
+                        alert( "failure message: " + JSON.stringify({data: data}));
+                    });
+
+                    return def.promise;
+                }
+
 
 
 
