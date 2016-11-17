@@ -10,6 +10,7 @@ public class DatabaseData {
     private String schemaName;
     private String hostName;
     private String port;
+    private String tableName;
 
     public String getDatabaseName() {
         return databaseName;
@@ -59,5 +60,13 @@ public class DatabaseData {
 
     public void setPort(String port) {
         this.port = port;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
     }
 }
