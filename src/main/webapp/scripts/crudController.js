@@ -26,6 +26,7 @@
         $scope.profile.hostName  = "db2at1.aus.prominagroup.com";
 
         $scope.addField = function() {
+            console.log($scope.data.fields , " log ...");
             $scope.data.fields.push({
                 name: "test " + counter++
             });

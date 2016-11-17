@@ -2,7 +2,7 @@
         <div>
             <md-input-container class="md-block" style="margin-top:0px;">
                 <label>Database Fields</label>
-                <md-select ng-model="demoDisplay.selection" required>
+                <md-select ng-model="demoDisplay.sourcetarget" required>
                     <md-optgroup label="Source Repository">
                         <md-option ng-value="targetItem" ng-repeat="targetItem in demoDays">{{targetItem}}</md-option>
                     </md-optgroup>
@@ -12,7 +12,7 @@
         <div>
             <md-input-container class="md-block" style="margin-top:0px;">
                 <label>FileNet Fields</label>
-                <md-select ng-model="demoDisplay.month" required>
+                <md-select ng-model="demoDisplay.destinationtarget" required>
                     <md-optgroup label="Source Repository">
                         <md-option ng-value="targetItem" ng-repeat="targetItem in demoMonths">{{targetItem}}</md-option>
                     </md-optgroup>
