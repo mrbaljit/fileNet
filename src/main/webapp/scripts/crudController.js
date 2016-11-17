@@ -20,11 +20,41 @@
 //        $scope.days = ['Day', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       //  $scope.months = ['Jan', 'Feb', 'Mar'];
 
+        $scope.profile = { };
+        $scope.profile.userName = "renewadm";
+        $scope.profile.password = "db2admin";
+        $scope.profile.port = "50019";
+        $scope.profile.schemaName  = "MARVL";
+        $scope.profile.databaseName  = "LU2RN2";
+        $scope.profile.hostName  = "db2at1.aus.prominagroup.com";
+
         $scope.addField = function() {
             $scope.data.fields.push({
                 name: "test " + counter++
             });
         };
+
+
+        $scope.connectToDB = function() {
+            var dataObj = {
+                userName: $scope.profile.userName,
+                password : $scope.profile.password,
+                schemaName : $scope.profile.schemaName,
+                hostName :  $scope.profile.hostName ,
+                port : $scope.profile.port,
+                databaseName :  $scope.profile.databaseName
+            };
+            productService.getDBTableName(dataObj).then(function (data) {
+                $scope.tableName = data;
+                console.log(data, " db col ..");
+                console.log($scope.tableName, " tableName");
+
+            });
+
+
+
+        };
+
 
 
         productService.getDBColumnName().then(function (data) {
@@ -76,7 +106,7 @@
             'label': 'Oracle'}
         ];
 
-        $scope.profile = {};
+
        // $scope.product.discountStartDate = new Date();
        // $scope.product.discountEndDate = new Date();
 
