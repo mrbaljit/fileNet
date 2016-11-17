@@ -26,7 +26,7 @@
                     return def.promise;
                 }
 
-                function getDBColumnName() {
+               /* function getDBColumnName(dataObj) {
                     var def = $q.defer();
                     $http.get('http://10.44.7.248:6090/profile/getDBTableColumns').success(function (data) {
                         console.log(data, " get Table Name");
@@ -35,6 +35,23 @@
                     }).error(function (data, status) {
                         console.log('Error ' + data)
                     });
+                    return def.promise;
+                }*/
+
+                function getDBColumnName(dataObj) {
+                    var def = $q.defer();
+                    console.log(dataObj, " column name");
+
+                    var res = $http.post('http://10.44.7.248:6090/profile/getDBTableColumns', dataObj);
+                    console.log(res);
+
+                    res.success(function(data, status, headers, config) {
+                        def.resolve(data);
+                    });
+                    res.error(function(data, status, headers, config) {
+                        alert( "failure message: " + JSON.stringify({data: data}));
+                    });
+
                     return def.promise;
                 }
 

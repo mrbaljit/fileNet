@@ -3,7 +3,7 @@
 
     <md-toolbar class="md-theme-light">
         <h2 class="md-toolbar-tools">
-            <span>Map DB - FileNet Information</span>
+            <span>Rural Quick Quote</span>
         </h2>
     </md-toolbar>
 
@@ -59,9 +59,9 @@
     <md-content layout-gt-xs="row" layout-padding>
         <div>
             <md-input-container class="md-block">
-                <label>Target Repository</label>
-                <md-select ng-model="profile.targetRepository" required>
-                    <md-optgroup label="Table Name Repository">
+                <label>Table Name</label>
+                <md-select ng-model="profile.tableName" required>
+                    <md-optgroup label="Table Name">
                         <md-option ng-value="targetItem" ng-repeat="targetItem in tableName">{{targetItem}}</md-option>
                     </md-optgroup>
                 </md-select>
@@ -73,6 +73,20 @@
         <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
             <md-button class="md-raised md-primary" ng-click="getTableColumns()">Get Table Columns</md-button>
         </section>
+    </md-content>
+
+
+    <md-content layout-gt-xs="row" layout-padding>
+        <div>
+            <md-input-container class="md-block">
+                <label>Column Name</label>
+                <md-select ng-model="profile.columnName" required>
+                    <md-optgroup label="Column Name">
+                        <md-option ng-value="targetItem" ng-repeat="targetItem in tableColumns">{{targetItem}}</md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+        </div>
     </md-content>
 
     <md-content>

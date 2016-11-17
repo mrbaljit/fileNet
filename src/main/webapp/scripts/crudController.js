@@ -17,9 +17,6 @@
             fields: []
         }
 
-//        $scope.days = ['Day', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      //  $scope.months = ['Jan', 'Feb', 'Mar'];
-
         $scope.profile = { };
         $scope.profile.userName = "renewadm";
         $scope.profile.password = "db2admin";
@@ -46,23 +43,28 @@
             };
             productService.getDBTableName(dataObj).then(function (data) {
                 $scope.tableName = data;
-                console.log(data, " db col ..");
                 console.log($scope.tableName, " tableName");
 
             });
-
-
-
         };
 
 
+        $scope.getTableColumns = function() {
+            var dataObj = {
+                userName: $scope.profile.userName,
+                password : $scope.profile.password,
+                schemaName : $scope.profile.schemaName,
+                hostName :  $scope.profile.hostName ,
+                port : $scope.profile.port,
+                databaseName :  $scope.profile.databaseName,
+                tableName : $scope.profile.tableName
+            };
+            productService.getDBColumnName(dataObj).then(function (data) {
+                $scope.tableColumns = data;
+                console.log($scope.tableName, " tableColumns");
 
-        productService.getDBColumnName().then(function (data) {
-            $scope.dbcol = data;
-            $scope.days = data;
-            $scope.months = data;
-            console.log(data, " db col ..");
-        });
+            });
+        };
 
 
        if($state.current.data.entryPoint === 'edit') {
