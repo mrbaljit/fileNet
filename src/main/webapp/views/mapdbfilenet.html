@@ -2,105 +2,137 @@
 <div layout="column" ng-cloak class="md-inline-form">
 
     <md-toolbar class="md-theme-light">
-        <h2 class="md-toolbar-tools">
+        <div class="md-toolbar-tools">
             <span>Rural Quick Quote</span>
-        </h2>
+        </div>
     </md-toolbar>
-
-    <md-content layout-gt-xs="row" layout-padding>
+    <div class="md-padding">
         <div>
-            <md-input-container>
-                <label>User Name</label>
-                <input ng-model="profile.userName" required>
-                <div ng-messages="profile.userName.$error">
-                    <div ng-message="required">This is required!</div>
-                </div>
-            </md-input-container>
-            <md-input-container>
-                <label>Database Name</label>
-                <input ng-model="profile.databaseName" required>
-                <div ng-messages="profile.databaseName.$error">
-                    <div ng-message="required">This is required!</div>
-                </div>
-            </md-input-container>
+            <fieldset class="standard">
+                <legend>Database Information</legend>
+                <md-content layout-gt-xs="row" layout-padding>
+                    <div>
+                        <md-input-container>
+                            <label>User Name</label>
+                            <input ng-model="profile.userName" required>
+                            <div ng-messages="profile.userName.$error">
+                                <div ng-message="required">This is required!</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Database Name</label>
+                            <input ng-model="profile.databaseName" required>
+                            <div ng-messages="profile.databaseName.$error">
+                                <div ng-message="required">This is required!</div>
+                            </div>
+                        </md-input-container>
 
+                        <md-input-container>
+                            <label>Port</label>
+                            <input ng-model="profile.port" required>
+                            <div ng-messages="profile.port.$error">
+                                <div ng-message="required">This is required!</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <md-content layout-gt-xs="row" layout-padding>
+                    <div>
+                        <md-input-container>
+                            <label>Schema Name</label>
+                            <input ng-model="profile.schemaName" required>
+                            <div ng-messages="profile.schemaName.$error">
+                                <div ng-message="required">This is required!</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Host Name</label>
+                            <input ng-model="profile.hostName" required>
+                            <div ng-messages="profile.hostName.$error">
+                                <div ng-message="required">This is required!</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <md-content>
+                    <section layout="row" layout-sm="column" layout-align="left" layout-wrap>
+                        <md-button class="md-raised md-primary" ng-click="connectToDB()">Connect to DB</md-button>
+                    </section>
+                </md-content>
+            </fieldset>
         </div>
-        <div>
-            <md-input-container>
-                <label>Port</label>
-                <input ng-model="profile.port" required>
-                <div ng-messages="profile.port.$error">
-                    <div ng-message="required">This is required!</div>
-                </div>
-            </md-input-container>
-            <md-input-container>
-                <label>Schema Name Name</label>
-                <input ng-model="profile.schemaName" required>
-                <div ng-messages="profile.schemaName.$error">
-                    <div ng-message="required">This is required!</div>
-                </div>
-            </md-input-container>
-            <md-input-container>
-                <label>Schema Name Name</label>
-                <input ng-model="profile.hostName" required>
-                <div ng-messages="profile.hostName.$error">
-                    <div ng-message="required">This is required!</div>
-                </div>
-            </md-input-container>
-        </div>
-    </md-content>
-
-    <md-content>
-        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button class="md-raised md-primary" ng-click="connectToDB()">Connect to DB</md-button>
-        </section>
-    </md-content>
-
-    <md-content layout-gt-xs="row" layout-padding>
-        <div>
-            <md-input-container class="md-block">
-                <label>Table Name</label>
-                <md-select ng-model="profile.tableName" required>
-                    <md-optgroup label="Table Name">
-                        <md-option ng-value="targetItem" ng-repeat="targetItem in tableName">{{targetItem}}</md-option>
-                    </md-optgroup>
-                </md-select>
-            </md-input-container>
-        </div>
-    </md-content>
-
-    <md-content>
-        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button class="md-raised md-primary" ng-click="getTableColumns()">Get Table Columns</md-button>
-        </section>
-    </md-content>
-
-
-    <md-content layout-gt-xs="row" layout-padding>
-        <div>
-            <md-input-container class="md-block">
-                <label>Column Name</label>
-                <md-select ng-model="profile.columnName" required>
-                    <md-optgroup label="Column Name">
-                        <md-option ng-value="targetItem" ng-repeat="targetItem in tableColumns">{{targetItem}}</md-option>
-                    </md-optgroup>
-                </md-select>
-            </md-input-container>
-        </div>
-    </md-content>
-
-    <md-content>
-        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button class="md-raised md-primary" ng-click="addField()">Add Field</md-button>
-        </section>
-    </md-content>
-
-    <div ng-repeat="field in data.fields">
-        <div demo-display="field" demo-days="tableColumns" demo-months="tableColumns"></div>
     </div>
+
+    <div class="md-padding">
+        <div>
+            <fieldset class="standard">
+                <legend>Select Table</legend>
+                <md-content layout-gt-xs="row" layout-padding>
+                    <div>
+                        <md-input-container class="md-block">
+                            <label>Table Name</label>
+                            <md-select ng-model="profile.tableName" required>
+                                <md-optgroup label="Table Name">
+                                    <md-option ng-value="targetItem" ng-repeat="targetItem in tableName">{{targetItem}}</md-option>
+                                </md-optgroup>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </md-content>
+
+                <md-content>
+                    <section layout="row" layout-sm="column" layout-align="left" layout-wrap>
+                        <md-button class="md-raised md-primary" ng-click="getTableColumns()">Get Columns</md-button>
+                    </section>
+                </md-content>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="md-padding">
+        <div>
+            <fieldset class="standard">
+                <legend>Map DB Fields to FileNet Table</legend>
+                <md-content>
+                    <section layout="row" layout-sm="column" layout-align="left" layout-wrap>
+                        <md-button class="md-raised md-primary" ng-click="addField()">Map DB Fields to FileNet</md-button>
+                    </section>
+                </md-content>
+
+                <div ng-repeat="field in data.fields">
+                    <div demo-display="field" demo-days="tableColumns" demo-months="tableColumns"></div>
+                </div>
+                </fieldset>
+            </div>
+        </div>
+
+
+
+
+    <div layout="column" layout-fill>
+        <md-toolbar>
+
+            <div class="md-toolbar-tools">
+                <span>My App's Title</span>
+
+                <!-- fill up the space between left and right area -->
+                <span flex></span>
+
+            </div>
+
+        </md-toolbar>
+        <md-content>
+            Hello!
+        </md-content>
+    </div>
+
 
     ---{{data.fields}}---
 
 </div>
+
+
+
+
 </form>
 
